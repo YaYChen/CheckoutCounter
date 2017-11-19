@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/menu_menu_refresh"
+        app:showAsAction="ifRoom"
+        tools:ignore="MenuTitle" />
+    <item
+        android:title="@string/main_menu_scan_title"
+        android:id="@+id/main_menu_scan"
+        />
+    <item
+        android:title="@string/main_menu_stop"
+        android:id="@+id/main_menu_stop"
+        />
+</menu>
