@@ -2,12 +2,25 @@
     <string name="app_name">CheckoutCounterApp</string>
     <!-- Activity title -->
     <string name="activity_title_scan_device">BLE Device Scan</string>
+    <string name="activity_title_main_features">Main features</string>
 
-    <!-- Menu items -->
+    <!-- Main menu items -->
     <string name="menu_connect">Connect</string>
     <string name="main_menu_refresh_title">wait...</string>
     <string name="main_menu_scan_title">Scan</string>
     <string name="main_menu_stop">Stop</string>
+
+    <!-- Main features menu items -->
+    <string name="main_features_menu_include_products_title">Include products</string>
+    <string name="main_features_menu_list_products_title">List products</string>
+    <string name="main_features_menu_list_inquiry_title">List inquiry</string>
+    <string name="main_features_menu_stock_control_title">Stock control</string>
+
+    <!-- fragment default -->
+    <string name="fragment_default_button_include_products_text">Include products</string>
+    <string name="fragment_default_button_list_products_text">List products</string>
+    <string name="fragment_default_button_list_inquiry_text">List inquiry</string>
+    <string name="fragment_default_button_stock_control_text">Stock control</string>
 
     <!-- Unknown string -->
     <string name="unknown_device">Unknown device</string>
@@ -23,5 +36,8 @@
     <string name="disconnected">Disconnected</string>
     <string name="title_devices">BLE Device Scan</string>
     <string name="error_bluetooth_not_supported">Bluetooth not supported.</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

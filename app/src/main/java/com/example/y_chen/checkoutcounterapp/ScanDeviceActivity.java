@@ -65,7 +65,7 @@ public class ScanDeviceActivity extends ListActivity {
         if (mScanning) {
             menu.findItem(R.id.main_menu_scan).setEnabled(false);
             menu.findItem(R.id.main_menu_stop).setEnabled(true);
-            menu.findItem(R.id.menu_menu_refresh).setActionView(
+            menu.findItem(R.id.main_menu_refresh).setActionView(
                     R.layout.actionbar_indeterminate_progress);
         } else {
             menu.findItem(R.id.main_menu_scan).setEnabled(true);
