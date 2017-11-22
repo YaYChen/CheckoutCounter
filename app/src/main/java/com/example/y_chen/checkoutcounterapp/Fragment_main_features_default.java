@@ -3,6 +3,7 @@ package com.example.y_chen.checkoutcounterapp;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.view.LayoutInflater;
@@ -18,7 +19,8 @@ public class Fragment_main_features_default extends Fragment implements View.OnC
 
     public static final String TAG="default";
 
-    private MainFeaturesActivity activity=(MainFeaturesActivity)getActivity();
+    private MainFeaturesActivity mactivity;
+    private Fragment mfragment;
 
     private Button buttonIncludeProducts;
     private Button buttonListProducts;
@@ -30,6 +32,11 @@ public class Fragment_main_features_default extends Fragment implements View.OnC
 
     }
 
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mactivity = (MainFeaturesActivity)context;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,41 +59,27 @@ public class Fragment_main_features_default extends Fragment implements View.OnC
 
     @Override
     public void onClick(View v) {
-
-        FragmentManager fm = activity.getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
         switch (v.getId()) {
             case R.id.fragment_default_button_include_products:
-                if (activity.fragment == null) {
-                    //activity.fragment = new ContactFragment();
-                }
-                replaceFragment(activity.fragment);
-
+                mfragment=new Fragment_main_features_include_products();
+                mactivity.replaceFragment(mfragment);
                 break;
             case R.id.fragment_default_button_list_inquiry:
-                replaceFragment(activity.fragment);
+
+                mactivity.replaceFragment(mfragment);
                 break;
             case R.id.fragment_default_button_list_products:
 
-                replaceFragment(activity.fragment);
+                mactivity.replaceFragment(mfragment);
                 break;
             case R.id.fragment_default_button_stock_control:
 
-                replaceFragment(activity.fragment);
+                mactivity.replaceFragment(mfragment);
                 break;
             default:
                 break;
 
         }
-        ft.commit();
-    }
-
-    private void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager=activity.getFragmentManager();
-        FragmentTransaction transaction=fragmentManager.beginTransaction();
-        transaction.replace(R.id.main_features_main_fragment_container,fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 
 }

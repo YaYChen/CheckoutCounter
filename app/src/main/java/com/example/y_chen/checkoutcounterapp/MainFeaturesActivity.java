@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.y_chen.checkoutcounterapp.Services.Interfaces.BluetoothDataReceiver;
+
 public class MainFeaturesActivity extends AppCompatActivity {
     private final static String TAG = MainFeaturesActivity.class.getSimpleName();
 
@@ -17,7 +19,7 @@ public class MainFeaturesActivity extends AppCompatActivity {
     private final String LIST_NAME = "NAME";
     private final String LIST_UUID = "UUID";
 
-    public Fragment fragment=null;
+    public Fragment mfragment=null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +27,8 @@ public class MainFeaturesActivity extends AppCompatActivity {
         getActionBar().setTitle(R.string.activity_title_main_features);
         setContentView(R.layout.activity_main_features);
 
-        fragment=new Fragment_main_features_default();
-        replaceFragment(fragment);
+        mfragment=new Fragment_main_features_default();
+        replaceFragment(mfragment);
     }
 
     @Override
@@ -38,7 +40,8 @@ public class MainFeaturesActivity extends AppCompatActivity {
                     @Override
                     public boolean onMenuItemClick(MenuItem item)
                     {
-
+                        mfragment=new Fragment_main_features_include_products();
+                        replaceFragment(mfragment);
                         return false;
                     }
                 });
@@ -78,20 +81,31 @@ public class MainFeaturesActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(fragment!=null){
-            replaceFragment(fragment);
+        if(mfragment!=null){
+            replaceFragment(mfragment);
         }else{
-            fragment=new Fragment_main_features_default();
-            replaceFragment(fragment);
+            mfragment=new Fragment_main_features_default();
+            replaceFragment(mfragment);
         }
 
     }
 
-    private void replaceFragment(Fragment fragment){
+    public void replaceFragment(Fragment fragment){
+        if(mfragment!=fragment){
+            mfragment=fragment;
+        }
         FragmentManager fragmentManager=getFragmentManager();
         FragmentTransaction transaction=fragmentManager.beginTransaction();
         transaction.replace(R.id.main_features_main_fragment_container,fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    private void receiveData(String data){
+        if(mfragment instanceof BluetoothDataReceiver){
+            ((BluetoothDataReceiver) mfragment).DataReceiver(data);
+        }else{
+
+        }
     }
 }
