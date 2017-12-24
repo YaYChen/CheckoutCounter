@@ -23,7 +23,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainFeaturesActivity"></activity>
+        <activity
+            android:name=".MainFeaturesActivity"
+            android:label="@string/app_name">
+
+        </activity>
     </application>
 
 </manifest>

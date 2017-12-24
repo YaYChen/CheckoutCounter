@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <item
-        android:title="@string/main_features_menu_include_products_title"
-        android:id="@+id/main_features_menu_include_products"
-        />
-    <item
-        android:title="@string/main_features_menu_list_products_title"
-        android:id="@+id/main_features_menu_list_products"
-        />
-    <item
-        android:title="@string/main_features_menu_list_inquiry_title"
-        android:id="@+id/main_features_menu_list_inquiry"
-        />
-    <item
-        android:title="@string/main_features_menu_stock_control_title"
-        android:id="@+id/main_features_menu_stock_control"
-        />
+        android:id="@+id/main_features_menu_status_display"
+        android:title="@string/connected"
+        app:showAsAction="always"/>
+
+    <group
+        android:id="@+id/main_features_menu_group"
+        android:title="Settings"
+        app:showAsAction="never">
+        <item
+            android:title="@string/main_features_menu_include_products_title"
+            android:id="@+id/main_features_menu_include_products"
+            />
+        <item
+            android:title="@string/main_features_menu_list_products_title"
+            android:id="@+id/main_features_menu_list_products"
+            />
+        <item
+            android:title="@string/main_features_menu_list_inquiry_title"
+            android:id="@+id/main_features_menu_list_inquiry"
+            />
+        <item
+            android:title="@string/main_features_menu_stock_control_title"
+            android:id="@+id/main_features_menu_stock_control"
+            />
+    </group>
+
+
+
 </menu>
