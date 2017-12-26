@@ -9,8 +9,21 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_activity_main_features"
         android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
         android:layout_width="match_parent"
+        app:title="Title"
+        app:titleTextColor="#ffffff"
+        android:background="@color/colorPrimary"
+        app:subtitle="SubTitle"
+        app:subtitleTextColor="#ffffff"
+        app:logo="@mipmap/ic_launcher"
+        />
+    <android.support.design.widget.NavigationView
+        android:id="@+id/navigation_view_main_features_activity"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:menu="@menu/navigation_menu"
+        app:headerLayout="@layout/navigation_header"
         />
 
     <LinearLayout

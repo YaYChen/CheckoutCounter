@@ -12,12 +12,16 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.os.IBinder;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.y_chen.checkoutcounterapp.Services.BuletoothService.BluetoothServices;
 import com.example.y_chen.checkoutcounterapp.Services.Interfaces.BluetoothDataReceiver;
@@ -42,6 +46,9 @@ public class MainFeaturesActivity extends AppCompatActivity {
     private boolean mConnected = false;
 
     public Fragment mfragment=null;
+
+    private Toolbar toolbar=null;
+    private NavigationView navigationView=null;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -131,8 +138,11 @@ public class MainFeaturesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_features);
-        Toolbar toolbar=(Toolbar)findViewById(R.id.toolbar_activity_main_features);
+        toolbar=(Toolbar)findViewById(R.id.toolbar_activity_main_features);
         setSupportActionBar(toolbar);
+        initToolbar();
+        navigationView=(NavigationView)findViewById(R.id.navigation_view_main_features_activity);
+        initNavigationView();
 
         final Intent intent = getIntent();
         mDeviceName = intent.getStringExtra(EXTRAS_DEVICE_NAME);
@@ -144,6 +154,57 @@ public class MainFeaturesActivity extends AppCompatActivity {
         Intent gattServiceIntent = new Intent(this, BluetoothServices.class);
         bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
     }
+
+    private void initToolbar(){
+        //设置menu
+        toolbar.inflateMenu(R.menu.menu_main_features);
+        //设置menu的点击事件
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                int menuItemId = item.getItemId();
+                if (menuItemId == R.id.main_features_menu_include_products) {
+
+
+                } else if (menuItemId == R.id.main_features_menu_list_inquiry) {
+
+
+                } else if (menuItemId == R.id.main_features_menu_status_display) {
+
+
+                } else if (menuItemId == R.id.main_features_menu_stock_control) {
+
+
+                }
+                return true;
+            }
+        });
+        //设置左侧NavigationIcon点击事件
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+    }
+
+    private void initNavigationView(){
+        navigationView.setCheckedItem(R.id.main_features_navigation_menu_item1);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.
+                OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int menuItemId = item.getItemId();
+                if(menuItemId==R.id.main_features_navigation_menu_item1){
+
+                }
+                return false;
+            }
+        });
+    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
